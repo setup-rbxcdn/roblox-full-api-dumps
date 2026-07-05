@@ -1,0 +1,56 @@
+name: Fetch Full Dump
+permissions:
+  contents: write
+on:
+  repository_dispatch:
+    types: [new_version]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version hash to extract dump for'
+        required: true
+        type: string
+concurrency:
+  group: fetch-full-dump-${{ github.event.client_payload.version || inputs.version }}
+  cancel-in-progress: false
+jobs:
+  extract:
+    runs-on: windows-latest  # Studio only runs on Windows
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Resolve version input
+        id: vars
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run full dump extraction
+        run: node scripts/fetch-full-dump.mjs --version "${{ steps.vars.outputs.version }}"
+      - name: Move dump into full-dumps folder
+        shell: bash
+        run: |
+          VERSION="${{ steps.vars.outputs.version }}"
+          mkdir -p full-dumps
+          cp "RobloxStudio/Merged-API-Dump.json" "full-dumps/version-$VERSION-Full-API-Dump.json"
+      - name: Commit and push dump
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add full-dumps/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add full dump for version ${{ steps.vars.outputs.version }}"
+            git push
+          fi

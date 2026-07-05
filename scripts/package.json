@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "roblox-rdd-downloader": "github:setup-rbxcdn/roblox-rdd-downloader"
+    }
+}

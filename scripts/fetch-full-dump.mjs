@@ -147,7 +147,7 @@ async function downloadStudioWithFallback(version, outDir) {
   for (const channel of channels) {
     try {
       console.log(
-        `Attempting download on channel "${channel}" (v${version})...`,
+        `Attempting download on channel "${channel}" (${version})...`,
       );
       await download({
         binaryType: "WindowsStudio64",
@@ -193,7 +193,7 @@ async function main() {
   await mkdir(outDir, { recursive: true });
 
   // Step 1: Download Studio
-  console.log(`\n=== Step 1: Downloading Roblox Studio (v${version}) ===`);
+  console.log(`\n=== Step 1: Downloading Roblox Studio (${version}) ===`);
   const usedChannel = await downloadStudioWithFallback(version, outDir);
 
   const studioExe = path.join(outDir, "RobloxStudioBeta.exe");

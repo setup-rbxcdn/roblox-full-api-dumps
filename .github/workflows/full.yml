@@ -30,10 +30,13 @@ jobs:
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-            echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+            RAW="${{ github.event.client_payload.version }}"
           else
-            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+            RAW="${{ inputs.version }}"
           fi
+          # Normalize: strip a leading "version-" prefix if present, so we always end up with a bare hash
+          VERSION="${RAW#version-}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Run full dump extraction
         run: node scripts/fetch-full-dump.mjs --version "${{ steps.vars.outputs.version }}"
       - name: Move dump into full-dumps folder

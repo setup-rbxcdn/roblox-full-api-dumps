@@ -16,8 +16,8 @@ import { download } from "roblox-rdd-downloader";
 
 const STUDIO_DIR = "./RobloxStudio";
 const PATCHER_URL =
-  "https://github.com/setup-rbxcdn/fullapidump-studio-patcher/releases/latest/download/fullapidump-patcher-windows.exe";
-const PATCHER_EXE = "fullapidump-patcher-windows.exe";
+  "https://github.com/setup-rbxcdn/fullapidump-studio-patcher/releases/latest/download/fullapidump-studio-patcher-windows.exe";
+const PATCHER_EXE = "fullapidump-studio-patcher-windows.exe";
 
 // --- Merge Logic (ported from merge_jsons.py) ---
 

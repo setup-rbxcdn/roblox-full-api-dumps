@@ -54,6 +54,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Add full dump for version ${{ steps.vars.outputs.version }}"
+            git commit -m "Add full dump for version-${{ steps.vars.outputs.version }}"
             git push
           fi

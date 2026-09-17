@@ -59,7 +59,7 @@ for _, apiClass in apiClasses do
 			local category = valueType.Category
 			local memberTags = {}
 
-			if not property.Permits or not next(property.Permits) then
+			if not next(property.Permits) then
 				table.insert(memberTags, "NotScriptable")
 			end
 

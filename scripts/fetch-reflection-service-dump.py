@@ -76,22 +76,26 @@ end
     if not results:
         raise RuntimeError("Luau task returned no results")
     raw_version = results[0]
-    try:
-        version_number = int(
-            raw_version.removeprefix("VERSION_MISMATCH:")
-            if isinstance(raw_version, str) and raw_version.startswith("VERSION_MISMATCH:")
-            else raw_version
+    if isinstance(raw_version, bool) or not isinstance(raw_version, (str, int, float)):
+        raise RuntimeError(
+            f"Luau task returned an unexpected result: {json.dumps(raw_version)}"
         )
-    except (TypeError, ValueError):
-        raise RuntimeError("Luau task returned an unexpected result") from None
-    print(f"Open Cloud version(): {version_number}")
+    actual_version = str(raw_version)
+    is_mismatch = actual_version.startswith("VERSION_MISMATCH:")
+    if is_mismatch:
+        actual_version = actual_version.removeprefix("VERSION_MISMATCH:")
+    print(f"Open Cloud version(): {actual_version}")
 
-    if isinstance(raw_version, str) and raw_version.startswith("VERSION_MISMATCH:"):
+    if is_mismatch:
         print(f"Expected LIVE {expected_version}; dump not ready")
         return NOT_READY_EXIT
 
     if len(results) != 2 or not isinstance(results[1], str):
-        raise RuntimeError("Luau task returned an unexpected result")
+        types = ", ".join(type(value).__name__ for value in results)
+        raise RuntimeError(
+            f"Luau task returned an unexpected result: expected 2 values, "
+            f"got {len(results)} ({types})"
+        )
     dump = json.loads(results[1])
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(dump, indent=2) + "\n", encoding="utf-8")

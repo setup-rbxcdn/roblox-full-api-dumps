@@ -91,4 +91,4 @@ for _, apiClass in apiClasses do
 	classesSize += 1
 end
 
-return HttpService:JSONEncode({ Classes = classes })
+return version(), HttpService:JSONEncode({ Classes = classes })

@@ -73,15 +73,26 @@ end
         raise RuntimeError(f"Luau task failed: {json.dumps(task.get('error'))}")
 
     results = task.get("output", {}).get("results", [])
-    if len(results) != 1 or not isinstance(results[0], str):
-        raise RuntimeError("Luau task returned an unexpected result")
-    result = results[0]
-    if result.startswith("VERSION_MISMATCH:"):
-        actual_version = result.removeprefix("VERSION_MISMATCH:")
-        print(f"Open Cloud is on {actual_version}; expected LIVE {expected_version}")
+    if not results:
+        raise RuntimeError("Luau task returned no results")
+    raw_version = results[0]
+    try:
+        version_number = int(
+            raw_version.removeprefix("VERSION_MISMATCH:")
+            if isinstance(raw_version, str) and raw_version.startswith("VERSION_MISMATCH:")
+            else raw_version
+        )
+    except (TypeError, ValueError):
+        raise RuntimeError("Luau task returned an unexpected result") from None
+    print(f"Open Cloud version(): {version_number}")
+
+    if isinstance(raw_version, str) and raw_version.startswith("VERSION_MISMATCH:"):
+        print(f"Expected LIVE {expected_version}; dump not ready")
         return NOT_READY_EXIT
 
-    dump = json.loads(result)
+    if len(results) != 2 or not isinstance(results[1], str):
+        raise RuntimeError("Luau task returned an unexpected result")
+    dump = json.loads(results[1])
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(dump, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {output} for version-{args.version}")

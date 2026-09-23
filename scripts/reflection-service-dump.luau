@@ -15,6 +15,26 @@ local renames = {
 	Region3Int16 = "Region3int16",
 }
 
+local function normalizeCapabilities(permits)
+	local capabilities = {}
+	for _, direction in { "Read", "Write" } do
+		local raw = permits[direction]
+		if raw then
+			local rawString = tostring(raw)
+			if rawString ~= "" then
+				local values = {}
+				for _, capability in string.split(rawString, " | ") do
+					table.insert(values, capability)
+				end
+				if #values ~= 0 then
+					capabilities[direction] = values
+				end
+			end
+		end
+	end
+	return capabilities
+end
+
 local ok, apiClasses = pcall(ReflectionService.GetClasses, ReflectionService, REFLECTION_FILTER)
 if not ok or not apiClasses then
 	error("ReflectionService:GetClasses failed: " .. tostring(apiClasses))
@@ -24,6 +44,7 @@ local classes, classesSize = {}, 1
 for _, apiClass in apiClasses do
 	local members, membersSize = {}, 1
 	local className = apiClass.Name
+
 	local class = {
 		Name = className,
 		Members = members,
@@ -31,8 +52,8 @@ for _, apiClass in apiClasses do
 		Serialized = apiClass.Serialized == true,
 	}
 	local permits = apiClass.Permits
-	local tags = {}
 
+	local tags = {}
 	if apiClass.Service then
 		table.insert(tags, "Service")
 	elseif permits and permits["GetService"] then
@@ -57,10 +78,14 @@ for _, apiClass in apiClasses do
 			local valueType = property.Type
 			local valueTypeName = valueType.EngineType
 			local category = valueType.Category
+			local memberPermits = property.Permits
 			local memberTags = {}
 
-			if not next(property.Permits) then
+			local capabilities
+			if not next(memberPermits) then
 				table.insert(memberTags, "NotScriptable")
+			else
+				capabilities = normalizeCapabilities(memberPermits)
 			end
 
 			if valueTypeName == "Enum" then
@@ -76,6 +101,7 @@ for _, apiClass in apiClasses do
 				MemberType = "Property",
 				ValueType = { Name = valueTypeName, Category = category },
 				Serialization = { CanLoad = serialized, CanSave = serialized },
+				Capabilities = capabilities,
 			}
 
 			if #memberTags ~= 0 then

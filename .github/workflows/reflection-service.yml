@@ -4,21 +4,15 @@ permissions:
   contents: write
 
 on:
-  repository_dispatch:
-    types: [live_version]
   workflow_dispatch:
     inputs:
-      version:
-        description: Studio deployment hash, with or without version-
-        required: true
-        type: string
-      engine_version:
-        description: Engine version string returned by version(), e.g. 0.703.1.7030123
+      versions:
+        description: 'JSON array of {version, engine_version} candidates; the candidate matching the Open Cloud engine version() is dumped'
         required: true
         type: string
 
 concurrency:
-  group: reflection-service-${{ github.event.client_payload.version || inputs.version }}
+  group: reflection-service
   cancel-in-progress: false
 
 jobs:
@@ -27,18 +21,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Resolve version input
+      - name: Resolve version candidates
         id: vars
         shell: bash
         env:
-          EVENT_VERSION: ${{ github.event.client_payload.version }}
-          EVENT_ENGINE_VERSION: ${{ github.event.client_payload.engine_version }}
-          INPUT_VERSION: ${{ inputs.version }}
-          INPUT_ENGINE_VERSION: ${{ inputs.engine_version }}
+          INPUT_VERSIONS: ${{ inputs.versions }}
         run: |
-          RAW_VERSION="${EVENT_VERSION:-$INPUT_VERSION}"
-          echo "version=${RAW_VERSION#version-}" >> "$GITHUB_OUTPUT"
-          echo "engine_version=${EVENT_ENGINE_VERSION:-$INPUT_ENGINE_VERSION}" >> "$GITHUB_OUTPUT"
+          if ! echo "$INPUT_VERSIONS" | jq -e '
+            type == "array"
+            and length > 0
+            and all(
+              type == "object"
+              and (.version | type) == "string" and (.version | length) > 0
+              and (.engine_version | type) == "string" and (.engine_version | length) > 0
+            )' > /dev/null; then
+            echo "Invalid candidates JSON: $INPUT_VERSIONS" >&2
+            exit 1
+          fi
+
+          CANDIDATES_FILE="$RUNNER_TEMP/reflection-candidates.json"
+          printf '%s\n' "$INPUT_VERSIONS" > "$CANDIDATES_FILE"
+          echo "candidates_file=$CANDIDATES_FILE" >> "$GITHUB_OUTPUT"
+
+          echo "Resolved candidates:"
+          jq -r '.[] | "  - \(.version) (\(.engine_version))"' "$CANDIDATES_FILE"
 
       - name: Extract ReflectionService dump
         id: extract
@@ -46,25 +52,37 @@ jobs:
           RBLX_OC_API_KEY: ${{ secrets.RBLX_OC_API_KEY }}
           RBLX_UNIVERSE_ID: ${{ secrets.RBLX_UNIVERSE_ID }}
           RBLX_PLACE_ID: ${{ secrets.RBLX_PLACE_ID }}
-          RBLX_EXPECTED_VERSION: ${{ steps.vars.outputs.engine_version }}
         shell: bash
         run: |
+          RESULT="$RUNNER_TEMP/reflection-result.json"
+
           set +e
           python scripts/fetch-reflection-service-dump.py \
-            --version "${{ steps.vars.outputs.version }}" \
-            --output "reflectionservice-dumps/version-${{ steps.vars.outputs.version }}-ReflectionService-Dump.json"
+            --candidates "${{ steps.vars.outputs.candidates_file }}" \
+            --result "$RESULT"
           STATUS=$?
           set -e
+
           if [ "$STATUS" -eq 3 ]; then
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-          elif [ "$STATUS" -ne 0 ]; then
-            exit "$STATUS"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
+            # No candidate matches the engine yet; the script logged why.
+            exit 0
           fi
 
+          if [ "$STATUS" -ne 0 ]; then
+            exit "$STATUS"
+          fi
+
+          if [ ! -f "$RESULT" ]; then
+            echo "Expected a result file at $RESULT" >&2
+            exit 1
+          fi
+
+          jq -r '"result: " + .status' "$RESULT"
+          echo "written=$(jq -r '.output // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
+          echo "version=$(jq -r '.version // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
+
       - name: Commit and push dump
-        if: steps.extract.outputs.ready == 'true'
+        if: steps.extract.outputs.written != ''
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -73,7 +91,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Add ReflectionService dump for version-${{ steps.vars.outputs.version }}"
+            git commit -m "Add ReflectionService dump for version-${{ steps.extract.outputs.version }}"
             git pull --rebase
             git push
           fi

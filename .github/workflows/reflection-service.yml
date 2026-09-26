@@ -5,11 +5,6 @@ permissions:
 
 on:
   workflow_dispatch:
-    inputs:
-      versions:
-        description: 'JSON array of {version, engine_version} candidates; the candidate matching the Open Cloud engine version() is dumped'
-        required: true
-        type: string
 
 concurrency:
   group: reflection-service
@@ -21,31 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Resolve version candidates
-        id: vars
-        shell: bash
-        env:
-          INPUT_VERSIONS: ${{ inputs.versions }}
-        run: |
-          if ! echo "$INPUT_VERSIONS" | jq -e '
-            type == "array"
-            and length > 0
-            and all(
-              type == "object"
-              and (.version | type) == "string" and (.version | length) > 0
-              and (.engine_version | type) == "string" and (.engine_version | length) > 0
-            )' > /dev/null; then
-            echo "Invalid candidates JSON: $INPUT_VERSIONS" >&2
-            exit 1
-          fi
-
-          CANDIDATES_FILE="$RUNNER_TEMP/reflection-candidates.json"
-          printf '%s\n' "$INPUT_VERSIONS" > "$CANDIDATES_FILE"
-          echo "candidates_file=$CANDIDATES_FILE" >> "$GITHUB_OUTPUT"
-
-          echo "Resolved candidates:"
-          jq -r '.[] | "  - \(.version) (\(.engine_version))"' "$CANDIDATES_FILE"
-
       - name: Extract ReflectionService dump
         id: extract
         env:
@@ -56,33 +26,19 @@ jobs:
         run: |
           RESULT="$RUNNER_TEMP/reflection-result.json"
 
-          set +e
-          python scripts/fetch-reflection-service-dump.py \
-            --candidates "${{ steps.vars.outputs.candidates_file }}" \
-            --result "$RESULT"
-          STATUS=$?
-          set -e
-
-          if [ "$STATUS" -eq 3 ]; then
-            # No candidate matches the engine yet; the script logged why.
-            exit 0
-          fi
-
-          if [ "$STATUS" -ne 0 ]; then
-            exit "$STATUS"
-          fi
+          python scripts/fetch-reflection-service-dump.py --result "$RESULT"
 
           if [ ! -f "$RESULT" ]; then
             echo "Expected a result file at $RESULT" >&2
             exit 1
           fi
 
-          jq -r '"result: " + .status' "$RESULT"
-          echo "written=$(jq -r '.output // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
-          echo "version=$(jq -r '.version // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
+          jq -r '"result: " + .status + " (engine " + (.engine_version // "?") + ")"' "$RESULT"
+          echo "outputs=$(jq -rc '.outputs // [] | join(" ")' "$RESULT")" >> "$GITHUB_OUTPUT"
+          echo "engine_version=$(jq -r '.engine_version // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push dump
-        if: steps.extract.outputs.written != ''
+        if: steps.extract.outputs.outputs != ''
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -91,7 +47,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Add ReflectionService dump for version-${{ steps.extract.outputs.version }}"
+            git commit -m "Add ReflectionService dump for ${{ steps.extract.outputs.engine_version }}"
             git pull --rebase
             git push
           fi

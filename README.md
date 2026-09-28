@@ -7,13 +7,22 @@ ReflectionService output is content-deduplicated into both:
 - `reflectionservice-dumps/hashes/version-<hash>-ReflectionService-Dump.json`
 - `reflectionservice-dumps/engine/<version()>-ReflectionService-Dump.json`
 
-The older manual Open Cloud workflow remains available as a fallback.
+Both workflows are counterpart extraction paths, dispatched externally, and
+both write the same dump layout:
+
+- `full.yml` runs the Luau task inside the downloaded Studio build.
+- `reflection-service.yml` runs it through Open Cloud.
+
+They are frequent, not manual-only. The Open Cloud path has its own use case:
+it can supply engine versions that do not appear in regular Studio builds.
 
 ## Repository secrets
 
 - `ROBLOSECURITY`: the full `.ROBLOSECURITY` value for a dedicated account.
 - `SECRET_ROTATION_TOKEN`: a fine-grained PAT able to update this repository's
   Actions secrets.
+- `RBLX_OC_API_KEY`, `RBLX_UNIVERSE_ID`, `RBLX_PLACE_ID`: used only by the
+  `reflection-service.yml` Open Cloud workflow.
 
 The weekly `rotate-cookie.yml` workflow replaces `ROBLOSECURITY` before it
 expires. Rotation invalidates the old cookie, so a failed secret update needs

@@ -236,7 +236,7 @@ async function main() {
       path.resolve(STUDIO_DIR, "ReflectionService-result.json"),
     ],
     path.resolve("."),
-    180000,
+    900000,
   );
 
   // Step 4: Download & run patcher

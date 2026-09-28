@@ -13,6 +13,16 @@ async function responseMessage(response) {
   return `${response.status} ${response.statusText}${text ? `: ${text}` : ""}`;
 }
 
+async function fetchRoblox(url, init) {
+  for (let attempt = 0; ; attempt++) {
+    const response = await fetch(url, init);
+    if (response.status !== 429 || attempt >= 4) return response;
+    const delay = 30000 * 2 ** attempt;
+    console.log(`Roblox rate limited ${new URL(url).host}; retrying in ${delay / 1000}s...`);
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+}
+
 function getSetCookie(response, name) {
   const headers = response.headers.getSetCookie?.() ?? [response.headers.get("set-cookie")];
   for (const header of headers) {
@@ -23,9 +33,12 @@ function getSetCookie(response, name) {
 }
 
 export async function validateCookie(cookie) {
-  const response = await fetch("https://users.roblox.com/v1/users/authenticated", {
+  const response = await fetchRoblox("https://users.roblox.com/v1/users/authenticated", {
     headers: cookieHeaders(cookie),
   });
+  if (response.status === 401 || response.status === 403) {
+    throw new Error("Roblox rejected the cookie as unauthenticated. It is invalid, expired, was invalidated by a rotation, or does not match this machine's region/IP.");
+  }
   if (!response.ok) throw new Error(`ROBLOSECURITY is invalid: ${await responseMessage(response)}`);
   const user = await response.json();
   if (!user.id) throw new Error("ROBLOSECURITY validation returned no user ID");
@@ -33,7 +46,7 @@ export async function validateCookie(cookie) {
 }
 
 async function getCsrfToken(cookie) {
-  const response = await fetch("https://auth.roblox.com/v2/logout", {
+  const response = await fetchRoblox("https://auth.roblox.com/v2/logout", {
     method: "POST",
     headers: cookieHeaders(cookie),
   });
@@ -43,7 +56,7 @@ async function getCsrfToken(cookie) {
 }
 
 export async function exchangeAuthenticationTicket(cookie) {
-  const response = await fetch("https://auth.roblox.com/v1/authentication-ticket", {
+  const response = await fetchRoblox("https://auth.roblox.com/v1/authentication-ticket", {
     method: "POST",
     headers: {
       ...cookieHeaders(cookie),
@@ -58,19 +71,12 @@ export async function exchangeAuthenticationTicket(cookie) {
   const ticket = response.headers.get("rbx-authentication-ticket");
   if (!ticket) throw new Error(`Roblox authentication-ticket request failed: ${await responseMessage(response)}`);
 
-  let redeemed;
-  for (let attempt = 0; ; attempt++) {
-    redeemed = await fetch("https://auth.roblox.com/v1/authentication-ticket/redeem", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", RBXAuthenticationNegotiation: "1" },
-      body: JSON.stringify({ authenticationTicket: ticket }),
-      redirect: "manual",
-    });
-    if (redeemed.status !== 429 || attempt >= 4) break;
-    const delay = 15000 * (attempt + 1);
-    console.log(`Ticketed redemption was rate limited; retrying in ${delay / 1000}s...`);
-    await new Promise((resolve) => setTimeout(resolve, delay));
-  }
+  const redeemed = await fetchRoblox("https://auth.roblox.com/v1/authentication-ticket/redeem", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", RBXAuthenticationNegotiation: "1" },
+    body: JSON.stringify({ authenticationTicket: ticket }),
+    redirect: "manual",
+  });
   const derived = getSetCookie(redeemed, ".ROBLOSECURITY");
   if (!derived) throw new Error(`Roblox authentication-ticket redemption failed: ${await responseMessage(redeemed)}`);
   return derived;
@@ -82,7 +88,7 @@ export async function createStudioOAuthTokens(cookie) {
   const scopes = ["openid", "credentials", "profile", "age", "roles", "premium"].map(
     (scopeType) => ({ scopeType, operations: ["read"] }),
   );
-  const response = await fetch("https://apis.roblox.com/oauth/v1/authorizations", {
+  const response = await fetchRoblox("https://apis.roblox.com/oauth/v1/authorizations", {
     method: "POST",
     headers: {
       ...cookieHeaders(cookie),
@@ -106,7 +112,7 @@ export async function createStudioOAuthTokens(cookie) {
   const code = new URL((await response.json()).location).searchParams.get("code");
   if (!code) throw new Error("Studio OAuth authorization returned no code");
 
-  const tokenResponse = await fetch("https://apis.roblox.com/oauth/v1/token", {
+  const tokenResponse = await fetchRoblox("https://apis.roblox.com/oauth/v1/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
@@ -128,7 +134,7 @@ export async function createStudioOAuthTokens(cookie) {
 }
 
 export async function refreshCookie(cookie) {
-  const response = await fetch("https://auth.roblox.com/v2/logoutfromallsessionsandreauthenticate", {
+  const response = await fetchRoblox("https://auth.roblox.com/v2/logoutfromallsessionsandreauthenticate", {
     method: "POST",
     headers: {
       ...cookieHeaders(cookie),

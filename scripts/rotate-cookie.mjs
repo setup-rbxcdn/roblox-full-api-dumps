@@ -12,8 +12,8 @@ try {
   if (!process.env.ROBLOSECURITY) throw new Error("ROBLOSECURITY is missing");
   if (!process.env.GH_TOKEN) throw new Error("GH_TOKEN (the SECRET_ROTATION_TOKEN secret) is missing");
 
-  const user = await validateCookie(process.env.ROBLOSECURITY);
-  console.log(`Rotating cookie for ${user.name} (${user.id})...`);
+  await validateCookie(process.env.ROBLOSECURITY);
+  console.log("Roblox authentication succeeded; rotating cookie...");
   const refreshed = await refreshCookie(process.env.ROBLOSECURITY);
   mask(refreshed);
   await validateCookie(refreshed);

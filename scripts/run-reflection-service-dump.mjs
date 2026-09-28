@@ -129,8 +129,8 @@ try {
   if (!sourceCookie) throw new Error("ROBLOSECURITY is missing");
   if (!existsSync(studio)) throw new Error(`Studio not found: ${studio}`);
 
-  const user = await validateCookie(sourceCookie);
-  console.log(`Authenticated source cookie for ${user.name} (${user.id})`);
+  const userId = await validateCookie(sourceCookie);
+  console.log("Roblox authentication succeeded");
   const cookie = await exchangeAuthenticationTicket(sourceCookie);
   mask(cookie);
   const tokens = await createStudioOAuthTokens(cookie);
@@ -144,7 +144,7 @@ try {
   await writeFile(wrapper, `local engineVersion, dump = (function()\n${source}\nend)()\nprint("${versionMarker}" .. tostring(engineVersion))\nlocal chunkSize = 20000\nlocal chunkCount = math.ceil(#dump / chunkSize)\nfor index = 1, chunkCount do\n\tlocal first = (index - 1) * chunkSize + 1\n\tprint("${chunkMarker}" .. index .. ":" .. chunkCount .. ":" .. string.sub(dump, first, first + chunkSize - 1))\nend\n`);
   await rm(log, { force: true });
 
-  const credentialTargets = await installCredentials(cookie, user.id, tokens);
+  const credentialTargets = await installCredentials(cookie, userId, tokens);
   try {
     await setRegistryCookie(cookie);
     await launchStudio(studio, ["--task", "RunScript", "--runScriptFile", wrapper, "--outputFile", log, "--quitAfterExecution"]);

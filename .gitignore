@@ -2,3 +2,5 @@ RobloxStudio/
 .studio-run/
 node_modules/
 auth.env
+__pycache__/
+*.pyc

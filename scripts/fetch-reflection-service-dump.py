@@ -6,6 +6,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
@@ -35,9 +36,11 @@ def request_json(url, api_key=None, *, body=None):
         with urllib.request.urlopen(request, timeout=30) as response:
             return json.load(response)
     except urllib.error.HTTPError as error:
-        raise RuntimeError(
-            f"HTTP {error.code} from {url}: {error.read().decode()}"
-        ) from error
+        safe_url = f"{urllib.parse.urlsplit(url).scheme}://{urllib.parse.urlsplit(url).netloc}"
+        # Do not include the full URL, response body, or chained HTTPError in
+        # logs: Open Cloud URLs contain private universe/place/task IDs and an
+        # error response could echo them.
+        raise RuntimeError(f"HTTP {error.code} from {safe_url}") from None
 
 
 def lookup_hash(engine_version):
@@ -91,7 +94,7 @@ def main():
     )
     task = request_json(create_url, api_key, body={"script": script})
     task_url = f"{API_ROOT}/{task['path']}"
-    print(f"Created {task['path']}")
+    print("Open Cloud task created")
 
     while task["state"] == "PROCESSING":
         time.sleep(2)

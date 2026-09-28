@@ -27,7 +27,9 @@ export async function validateCookie(cookie) {
     headers: cookieHeaders(cookie),
   });
   if (!response.ok) throw new Error(`ROBLOSECURITY is invalid: ${await responseMessage(response)}`);
-  return response.json();
+  const user = await response.json();
+  if (!user.id) throw new Error("ROBLOSECURITY validation returned no user ID");
+  return user.id;
 }
 
 async function getCsrfToken(cookie) {

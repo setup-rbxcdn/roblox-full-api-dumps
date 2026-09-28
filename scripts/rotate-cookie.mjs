@@ -14,25 +14,31 @@ try {
 
   await validateCookie(process.env.ROBLOSECURITY);
   console.log("Roblox authentication succeeded; rotating cookie...");
-
-  // Normalize the stored browser session to the Actions runner before calling
-  // the stricter refresh endpoint. Validation alone can succeed even when that
-  // endpoint rejects an IP-bound cookie as unauthenticated.
-  const runnerCookie = await exchangeAuthenticationTicket(process.env.ROBLOSECURITY);
-  mask(runnerCookie);
-  await validateCookie(runnerCookie);
-
-  const refreshed = await refreshCookie(runnerCookie);
+  const refreshed = await refreshCookie(process.env.ROBLOSECURITY);
   mask(refreshed);
   await validateCookie(refreshed);
-  const normalized = await exchangeAuthenticationTicket(refreshed);
-  mask(normalized);
-  await validateCookie(normalized);
-  await runProcess("gh", ["secret", "set", "ROBLOSECURITY", "--repo", process.env.GITHUB_REPOSITORY], {
-    input: normalized,
-    env: process.env,
-  });
-  console.log("ROBLOSECURITY was rotated, normalized, validated, and saved.");
+  const saveSecret = (value) =>
+    runProcess("gh", ["secret", "set", "ROBLOSECURITY", "--repo", process.env.GITHUB_REPOSITORY], {
+      input: value,
+      env: process.env,
+    });
+
+  // Persist immediately: the refresh already invalidated the previous cookie,
+  // so the replacement must be saved before attempting any further request.
+  await saveSecret(refreshed);
+  console.log("Replacement ROBLOSECURITY saved.");
+
+  // Normalization reduces future IP binding, but is best-effort. A rate limit
+  // here must not discard the valid cookie that was already stored.
+  try {
+    const normalized = await exchangeAuthenticationTicket(refreshed);
+    mask(normalized);
+    await validateCookie(normalized);
+    await saveSecret(normalized);
+    console.log("ROBLOSECURITY was rotated, normalized, validated, and saved.");
+  } catch (error) {
+    console.log(`Normalization skipped (${error.message}); the rotated cookie is already stored.`);
+  }
 } catch (error) {
   console.error(error.message);
   process.exitCode = 1;

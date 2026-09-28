@@ -58,12 +58,19 @@ export async function exchangeAuthenticationTicket(cookie) {
   const ticket = response.headers.get("rbx-authentication-ticket");
   if (!ticket) throw new Error(`Roblox authentication-ticket request failed: ${await responseMessage(response)}`);
 
-  const redeemed = await fetch("https://auth.roblox.com/v1/authentication-ticket/redeem", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", RBXAuthenticationNegotiation: "1" },
-    body: JSON.stringify({ authenticationTicket: ticket }),
-    redirect: "manual",
-  });
+  let redeemed;
+  for (let attempt = 0; ; attempt++) {
+    redeemed = await fetch("https://auth.roblox.com/v1/authentication-ticket/redeem", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", RBXAuthenticationNegotiation: "1" },
+      body: JSON.stringify({ authenticationTicket: ticket }),
+      redirect: "manual",
+    });
+    if (redeemed.status !== 429 || attempt >= 4) break;
+    const delay = 15000 * (attempt + 1);
+    console.log(`Ticketed redemption was rate limited; retrying in ${delay / 1000}s...`);
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
   const derived = getSetCookie(redeemed, ".ROBLOSECURITY");
   if (!derived) throw new Error(`Roblox authentication-ticket redemption failed: ${await responseMessage(redeemed)}`);
   return derived;

@@ -220,8 +220,27 @@ async function main() {
     throw new Error(`Normal API dump not created at ${normalJson}`);
   console.log(`Normal dump: ${normalJson}`);
 
-  // Step 3: Download & run patcher
-  console.log("\n=== Step 3: Patching Studio ===");
+  // Step 3: Run ReflectionService before the full-dump patch modifies Studio.
+  console.log("\n=== Step 3: Generating ReflectionService Dump ===");
+  await runCommand(
+    process.execPath,
+    [
+      path.resolve("scripts/run-reflection-service-dump.mjs"),
+      "--studio",
+      studioExe,
+      "--version",
+      version,
+      "--script",
+      path.resolve("scripts/reflection-service-dump.luau"),
+      "--result",
+      path.resolve(STUDIO_DIR, "ReflectionService-result.json"),
+    ],
+    path.resolve("."),
+    180000,
+  );
+
+  // Step 4: Download & run patcher
+  console.log("\n=== Step 4: Patching Studio ===");
   const patcherPath = path.join(outDir, PATCHER_EXE);
   if (!existsSync(patcherPath)) await downloadFile(PATCHER_URL, patcherPath);
   else console.log(`  Patcher exists: ${patcherPath}`);
@@ -232,8 +251,8 @@ async function main() {
     throw new Error(`Patched exe not created at ${patchedExe}`);
   console.log(`Patched: ${patchedExe}`);
 
-  // Step 4: Generate FULL API dump
-  console.log("\n=== Step 4: Generating Full API Dump ===");
+  // Step 5: Generate FULL API dump
+  console.log("\n=== Step 5: Generating Full API Dump ===");
   const fullJson = path.join(outDir, "Full-API-Dump.json");
   if (existsSync(fullJson)) await unlink(fullJson);
 
@@ -251,8 +270,8 @@ async function main() {
     throw new Error(`Full API dump not created at ${fullJson}`);
   console.log(`Full dump: ${fullJson}`);
 
-  // Step 5: Merge dumps
-  console.log("\n=== Step 5: Merging Dumps ===");
+  // Step 6: Merge dumps
+  console.log("\n=== Step 6: Merging Dumps ===");
   const mergedJson = path.join(outDir, "Merged-API-Dump.json");
   await mergeDumps(normalJson, fullJson, mergedJson);
 

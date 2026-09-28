@@ -1,5 +1,10 @@
 {
-    "dependencies": {
-        "roblox-rdd-downloader": "github:setup-rbxcdn/roblox-rdd-downloader"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check scripts/fetch-full-dump.mjs && node --check scripts/roblox-auth.mjs && node --check scripts/run-reflection-service-dump.mjs && node --check scripts/rotate-cookie.mjs"
+  },
+  "dependencies": {
+    "roblox-rdd-downloader": "github:setup-rbxcdn/roblox-rdd-downloader#5a12f17937a44e805188ba5037a9890c6f3dcf44"
+  }
 }

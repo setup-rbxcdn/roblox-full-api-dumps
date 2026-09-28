@@ -1,0 +1,30 @@
+name: Rotate Roblox cookie
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * 0"
+
+concurrency:
+  group: roblox-authentication
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Rotate, normalize, and save cookie
+        env:
+          ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}
+          GH_TOKEN: ${{ secrets.SECRET_ROTATION_TOKEN }}
+        run: node scripts/rotate-cookie.mjs

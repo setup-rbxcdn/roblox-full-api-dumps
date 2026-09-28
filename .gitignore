@@ -1,0 +1,4 @@
+RobloxStudio/
+.studio-run/
+node_modules/
+auth.env

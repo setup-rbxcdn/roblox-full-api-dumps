@@ -14,7 +14,15 @@ try {
 
   await validateCookie(process.env.ROBLOSECURITY);
   console.log("Roblox authentication succeeded; rotating cookie...");
-  const refreshed = await refreshCookie(process.env.ROBLOSECURITY);
+
+  // Normalize the stored browser session to the Actions runner before calling
+  // the stricter refresh endpoint. Validation alone can succeed even when that
+  // endpoint rejects an IP-bound cookie as unauthenticated.
+  const runnerCookie = await exchangeAuthenticationTicket(process.env.ROBLOSECURITY);
+  mask(runnerCookie);
+  await validateCookie(runnerCookie);
+
+  const refreshed = await refreshCookie(runnerCookie);
   mask(refreshed);
   await validateCookie(refreshed);
   const normalized = await exchangeAuthenticationTicket(refreshed);

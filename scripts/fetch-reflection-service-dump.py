@@ -60,14 +60,15 @@ def lookup_hash(engine_version):
 
 
 def update_dump(path, dump_obj, outputs):
-    """Write path unless it already holds this exact JSON."""
+    """Write path only when it does not exist yet.
+
+    Never overwrite an existing dump: a file placed by the authenticated
+    Studio run is authoritative, and this script runs often enough that
+    FFlag drift could otherwise clobber it.
+    """
     if path.exists():
-        try:
-            if json.loads(path.read_text(encoding="utf-8")) == dump_obj:
-                print(f"{path} unchanged")
-                return
-        except (json.JSONDecodeError, OSError):
-            pass
+        print(f"{path} exists, keeping it")
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(dump_obj, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {path}")
@@ -81,8 +82,9 @@ def main():
     )
     args = parser.parse_args()
 
-    # Always run the full Luau task: FFlags can flip the dump contents even when
-    # version() has not moved, so every run re-dumps and content-dedupes writes.
+    # Runs the full Luau task each time, but only writes dumps for versions we
+    # do not have yet (see update_dump); existing files, e.g. from a Studio run,
+    # are left alone.
     api_key = os.environ["RBLX_OC_API_KEY"]
     universe_id = os.environ["RBLX_UNIVERSE_ID"]
     place_id = os.environ["RBLX_PLACE_ID"]

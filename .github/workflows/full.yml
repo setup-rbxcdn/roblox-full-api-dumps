@@ -56,6 +56,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Add dumps for version-${{ steps.vars.outputs.version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            git commit -m "[Studio] Add dumps for version-${{ steps.vars.outputs.version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             git push
           fi

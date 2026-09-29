@@ -19,6 +19,8 @@ HASH_DIR = pathlib.Path("reflectionservice-dumps/hashes")
 ENGINE_DIR = pathlib.Path("reflectionservice-dumps/engine")
 DUMP_NAME = "ReflectionService-Dump.json"
 SAFE_NAME = re.compile(r"^[A-Za-z0-9._-]+$")
+POLL_SECONDS = 2
+TASK_TIMEOUT_SECONDS = 300
 
 
 def request_json(url, api_key=None, *, body=None):
@@ -96,8 +98,14 @@ def main():
     task_url = f"{API_ROOT}/{task['path']}"
     print("Open Cloud task created")
 
+    deadline = time.monotonic() + TASK_TIMEOUT_SECONDS
     while task["state"] == "PROCESSING":
-        time.sleep(2)
+        time.sleep(POLL_SECONDS)
+        if time.monotonic() > deadline:
+            raise RuntimeError(
+                f"Luau task still processing after {TASK_TIMEOUT_SECONDS}s; "
+                "Open Cloud is likely backlogged, try again later"
+            )
         task = request_json(task_url, api_key)
 
     if task["state"] != "COMPLETE":

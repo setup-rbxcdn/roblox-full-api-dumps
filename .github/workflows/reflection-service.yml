@@ -48,7 +48,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "[OpenCloud] Add ReflectionService dump for ${{ steps.extract.outputs.engine_version }}"
+            git commit -m "[OpenCloud] Add ReflectionService dump for ${{ steps.extract.outputs.engine_version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             git pull --rebase
             git push
           fi

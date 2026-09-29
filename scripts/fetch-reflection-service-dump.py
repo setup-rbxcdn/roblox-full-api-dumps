@@ -45,13 +45,8 @@ def request_json(url, api_key=None, *, body=None):
         raise RuntimeError(f"HTTP {error.code} from {safe_url}") from None
 
 
-def lookup_hash(engine_version):
+def lookup_hash(engine_version, history):
     """The hash for this engine version; None if history does not know it yet."""
-    try:
-        history = request_json(VERSION_HISTORY_URL)
-    except (RuntimeError, OSError) as error:
-        print(f"Could not read version history: {error}")
-        return None
     raw = history.get(engine_version)
     if not isinstance(raw, str) or not raw.strip():
         print(f"Version history has no Studio64 hash for {engine_version}")
@@ -59,13 +54,8 @@ def lookup_hash(engine_version):
     return raw.strip().removeprefix("version-")
 
 
-def update_dump(path, dump_obj, outputs):
-    """Write path only when it does not exist yet.
-
-    Never overwrite an existing dump: a file placed by the authenticated
-    Studio run is authoritative, and this script runs often enough that
-    FFlag drift could otherwise clobber it.
-    """
+def write_dump(path, dump_obj, outputs):
+    """Write path if missing; existing files belong to the Studio run."""
     if path.exists():
         print(f"{path} exists, keeping it")
         return
@@ -75,23 +65,16 @@ def update_dump(path, dump_obj, outputs):
     outputs.append(path.as_posix())
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--result", required=True, help="Path for the run summary JSON"
-    )
-    args = parser.parse_args()
+def fetch_history():
+    try:
+        return request_json(VERSION_HISTORY_URL)
+    except (RuntimeError, OSError) as error:
+        print(f"Could not read version history: {error}")
+        return {}
 
-    # Runs the full Luau task each time, but only writes dumps for versions we
-    # do not have yet (see update_dump); existing files, e.g. from a Studio run,
-    # are left alone.
-    api_key = os.environ["RBLX_OC_API_KEY"]
-    universe_id = os.environ["RBLX_UNIVERSE_ID"]
-    place_id = os.environ["RBLX_PLACE_ID"]
-    script = pathlib.Path(__file__).with_name("reflection-service-dump.luau").read_text(
-        encoding="utf-8"
-    )
 
+def run_luau_task(script, api_key, universe_id, place_id):
+    """Submit a Luau task, poll it to completion, return its results list."""
     create_url = (
         f"{API_ROOT}/universes/{universe_id}/places/{place_id}/"
         "luau-execution-session-tasks"
@@ -112,8 +95,26 @@ def main():
 
     if task["state"] != "COMPLETE":
         raise RuntimeError(f"Luau task failed: {json.dumps(task.get('error'))}")
+    return task.get("output", {}).get("results", [])
 
-    results = task.get("output", {}).get("results", [])
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--result", required=True, help="Path for the run summary JSON"
+    )
+    args = parser.parse_args()
+
+    api_key = os.environ["RBLX_OC_API_KEY"]
+    universe_id = os.environ["RBLX_UNIVERSE_ID"]
+    place_id = os.environ["RBLX_PLACE_ID"]
+
+    # One task per run: the full dump. write_dump only fills in files that
+    # are missing; existing ones belong to the Studio run.
+    script = pathlib.Path(__file__).with_name("reflection-service-dump.luau").read_text(
+        encoding="utf-8"
+    )
+    results = run_luau_task(script, api_key, universe_id, place_id)
     if len(results) != 2 or not isinstance(results[0], (str, int, float)) \
             or isinstance(results[0], bool) or not isinstance(results[1], str):
         raise RuntimeError(
@@ -126,15 +127,17 @@ def main():
         raise RuntimeError(f"Unusable engine version string: {engine_version!r}")
     print(f"Open Cloud version(): {engine_version}")
 
+    hash_version = lookup_hash(engine_version, fetch_history())
+    engine_path = ENGINE_DIR / f"{engine_version}-{DUMP_NAME}"
+    hash_path = HASH_DIR / f"version-{hash_version}-{DUMP_NAME}" if hash_version else None
+
     dump_obj = json.loads(results[1])
     outputs = []
 
-    update_dump(ENGINE_DIR / f"{engine_version}-{DUMP_NAME}", dump_obj, outputs)
-
+    write_dump(engine_path, dump_obj, outputs)
     # The hash copy is best-effort: history may not know this version yet.
-    hash_version = lookup_hash(engine_version)
-    if hash_version:
-        update_dump(HASH_DIR / f"version-{hash_version}-{DUMP_NAME}", dump_obj, outputs)
+    if hash_path:
+        write_dump(hash_path, dump_obj, outputs)
 
     result = {
         "status": "written" if outputs else "unchanged",

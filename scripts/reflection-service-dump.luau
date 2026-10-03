@@ -17,8 +17,7 @@ local renames = {
 
 local function normalizeCapabilities(permits)
 	local capabilities = {}
-	for _, direction in { "Read", "Write" } do
-		local raw = permits[direction]
+	for direction, raw in permits do
 		if raw then
 			local rawString = tostring(raw)
 			if rawString ~= "" then

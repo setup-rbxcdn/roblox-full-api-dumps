@@ -57,5 +57,14 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "[Studio] Add dumps for version-${{ steps.vars.outputs.version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            git push
+            n=0
+            until git pull --rebase origin main && git push origin HEAD:main; do
+              git rebase --abort 2>/dev/null || true
+              n=$((n+1))
+              if [ $n -ge 5 ]; then
+                echo "Push failed after $n attempts"
+                exit 1
+              fi
+              sleep $((n*5))
+            done
           fi

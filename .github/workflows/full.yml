@@ -57,14 +57,18 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "[Studio] Add dumps for version-${{ steps.vars.outputs.version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            n=0
-            until git pull --rebase origin main && git push origin HEAD:main; do
-              git rebase --abort 2>/dev/null || true
-              n=$((n+1))
-              if [ $n -ge 5 ]; then
-                echo "Push failed after $n attempts"
-                exit 1
+            # Another dump run can commit the same file (for example the same version hash produced by a
+            # concurrent ReflectionService run) between our checkout and our push. That surfaces as an
+            # add/add conflict on `git pull --rebase`, which retrying the identical pull can never clear,
+            # so prefer this run's freshly generated dumps when a hunk conflicts and rebase again.
+            for n in 1 2 3 4 5; do
+              if git fetch origin main && git rebase --strategy-option=theirs origin/main && git push origin HEAD:main; then
+                exit 0
               fi
+              git rebase --abort 2>/dev/null || git rebase --quit 2>/dev/null || true
+              echo "Push attempt $n failed"
               sleep $((n*5))
             done
+            echo "Push failed after 5 attempts"
+            exit 1
           fi

@@ -56,7 +56,15 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "[Studio] Add dumps for version-${{ steps.vars.outputs.version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            # Name the build by its engine version when we have it, e.g.
+            # "[Studio] Add dumps for 0.746.0.7461264 version-fee454b8e2094ba9".
+            ENGINE_VERSION=$(jq -r '.engine_version // ""' RobloxStudio/ReflectionService-result.json 2>/dev/null || true)
+            if [ -n "$ENGINE_VERSION" ]; then
+              MESSAGE="[Studio] Add dumps for $ENGINE_VERSION version-${{ steps.vars.outputs.version }}"
+            else
+              MESSAGE="[Studio] Add dumps for version-${{ steps.vars.outputs.version }}"
+            fi
+            git commit -m "$MESSAGE" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             # Another dump run can commit the same file (for example the same version hash produced by a
             # concurrent ReflectionService run) between our checkout and our push. That surfaces as an
             # add/add conflict on `git pull --rebase`, which retrying the identical pull can never clear,

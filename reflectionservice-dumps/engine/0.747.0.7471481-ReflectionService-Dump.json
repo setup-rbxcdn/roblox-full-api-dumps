@@ -178,6 +178,15 @@
       ]
     },
     {
+      "Name": "AccountService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "Instance",
       "Serialized": true,
       "Name": "Accoutrement",
@@ -1645,6 +1654,15 @@
       ],
       "Superclass": "Instance",
       "Serialized": true,
+      "Members": []
+    },
+    {
+      "Name": "AnimationFromVideoCreatorStudioService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
       "Members": []
     },
     {
@@ -3880,6 +3898,33 @@
       ]
     },
     {
+      "Name": "AssetImportService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "AssetImportSession",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "ImportSession",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "AssetManagerService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "AssetPatchSettings",
       "Tags": [
         "NotCreatable"
@@ -5619,6 +5664,15 @@
           }
         }
       ]
+    },
+    {
+      "Name": "AudioFocusService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Superclass": "Instance",
@@ -11065,6 +11119,15 @@
       ]
     },
     {
+      "Name": "AvatarImportService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "Instance",
       "Serialized": true,
       "Name": "AvatarRules",
@@ -14532,6 +14595,204 @@
       "Members": []
     },
     {
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Name": "Breakpoint",
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Condition",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ContinueExecution",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Enabled",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "Id",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "Line",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "LogMessage",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "MetaBreakpointId",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "RemoveOnHit",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Script",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Valid",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Verified",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Superclass": "ValueBase",
       "Serialized": true,
       "Name": "BrickColorValue",
@@ -15016,6 +15277,15 @@
     },
     {
       "Name": "CallingService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "CalloutService",
       "Tags": [
         "Service"
       ],
@@ -17196,15 +17466,6 @@
       "Members": []
     },
     {
-      "Name": "CloudImportService",
-      "Tags": [
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Serialized": false,
-      "Members": []
-    },
-    {
       "Name": "CloudLocalizationTable",
       "Tags": [
         "NotCreatable"
@@ -17844,6 +18105,33 @@
       "Superclass": "Instance",
       "Serialized": true,
       "Members": []
+    },
+    {
+      "Name": "ConnectivityService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "NetworkStatus",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "NetworkStatus",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
     },
     {
       "Name": "Constraint",
@@ -18587,6 +18875,15 @@
       "Members": []
     },
     {
+      "Name": "CoreScriptDebuggingManagerHelper",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "CoreScriptSyncService",
       "Tags": [
         "Service"
@@ -18612,6 +18909,15 @@
     },
     {
       "Name": "CreatorStoreService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "CrossDMScriptChangeListener",
       "Tags": [
         "Service"
       ],
@@ -19091,62 +19397,6 @@
       "Members": [
         {
           "ValueType": {
-            "Name": "GameAvatarType",
-            "Category": "Enum"
-          },
-          "MemberType": "Property",
-          "Name": "GameAvatarType",
-          "Tags": [
-            "NotScriptable"
-          ],
-          "Serialization": {
-            "CanSave": false,
-            "CanLoad": false
-          }
-        },
-        {
-          "ValueType": {
-            "Name": "R15CollisionType",
-            "Category": "Enum"
-          },
-          "MemberType": "Property",
-          "Name": "R15CollisionType",
-          "Tags": [
-            "NotScriptable"
-          ],
-          "Serialization": {
-            "CanSave": false,
-            "CanLoad": false
-          }
-        },
-        {
-          "ValueType": {
-            "Name": "Instance",
-            "Category": "Class"
-          },
-          "MemberType": "Property",
-          "Name": "lighting",
-          "Capabilities": [],
-          "Serialization": {
-            "CanSave": false,
-            "CanLoad": false
-          }
-        },
-        {
-          "ValueType": {
-            "Name": "RunService",
-            "Category": "Class"
-          },
-          "MemberType": "Property",
-          "Name": "RunService",
-          "Capabilities": [],
-          "Serialization": {
-            "CanSave": false,
-            "CanLoad": false
-          }
-        },
-        {
-          "ValueType": {
             "Name": "int64"
           },
           "MemberType": "Property",
@@ -19417,6 +19667,62 @@
           "MemberType": "Property",
           "Name": "workspace",
           "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Instance",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "lighting",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "RunService",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "RunService",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "GameAvatarType",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "GameAvatarType",
+          "Tags": [
+            "NotScriptable"
+          ],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "R15CollisionType",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "R15CollisionType",
+          "Tags": [
+            "NotScriptable"
+          ],
           "Serialization": {
             "CanSave": false,
             "CanLoad": false
@@ -19939,6 +20245,15 @@
       ]
     },
     {
+      "Name": "DebuggablePluginWatcher",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "DebuggerBreakpoint",
       "Tags": [
         "NotCreatable"
@@ -20035,6 +20350,200 @@
       ]
     },
     {
+      "Name": "DebuggerConnection",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "ErrorMessage",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "HasError",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "Id",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsPaused",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "DebuggerConnectionManager",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "double"
+          },
+          "MemberType": "Property",
+          "Name": "Timeout",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "DebuggerLuaResponse",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsError",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsSuccess",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Message",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "RequestId",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DebuggerStatus",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "Status",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Name": "DebuggerManager",
       "Tags": [
         "Service"
@@ -20049,6 +20558,121 @@
           "MemberType": "Property",
           "Name": "DebuggingEnabled",
           "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "DebuggerUIService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "DebuggerVariable",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Name",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Populated",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Type",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Value",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "VariableId",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "VariablesCount",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
           "Serialization": {
             "CanSave": false,
             "CanLoad": false
@@ -20553,6 +21177,73 @@
           "Capabilities": {
             "Read": [
               "Basic"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "DeferredAssetManagerService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "int64"
+          },
+          "MemberType": "Property",
+          "Name": "JoiningPlaceId",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int64"
+          },
+          "MemberType": "Property",
+          "Name": "JoiningUniverseId",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "PregameLoadingScreenOnly",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
             ]
           },
           "Serialization": {
@@ -21708,6 +22399,15 @@
       ]
     },
     {
+      "Name": "DraftsService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "ClickDetector",
       "Serialized": true,
       "Name": "DragDetector",
@@ -22244,6 +22944,274 @@
       "Members": []
     },
     {
+      "Name": "DraggerService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "AlignDraggedObjects",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "AngleSnapEnabled",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "AngleSnapIncrement",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "AnimateHover",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "CollisionsEnabled",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DraggerCoordinateSpace",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "DraggerCoordinateSpace",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DraggerMovementMode",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "DraggerMovementMode",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Color3"
+          },
+          "MemberType": "Property",
+          "Name": "GeometrySnapColor",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "HoverAnimateFrequency",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "HoverLineThickness",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "HoverThickness",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "JointsEnabled",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "LinearSnapEnabled",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "LinearSnapIncrement",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "PartSnapEnabled",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "PivotSnapToGeometry",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ShowHover",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ShowPivotIndicator",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "UseBoundingBoxes",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Name": "DynamicRotate",
       "Tags": [
         "NotCreatable"
@@ -22727,6 +23695,15 @@
       "Members": []
     },
     {
+      "Name": "ExperienceService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "ExperienceStateCaptureService",
       "Tags": [
         "Service"
@@ -22830,6 +23807,63 @@
           }
         }
       ]
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Name": "ExplorerFilter",
+      "Members": []
+    },
+    {
+      "Name": "ExplorerFilterAutocompleter",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "ReplaceRange",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "RequiresOutsideContext",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ExplorerServiceVisibilityService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Superclass": "Instance",
@@ -23921,6 +24955,35 @@
       "Members": []
     },
     {
+      "Name": "FacialAnimationRecordingService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "BiometricDataConsent",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Name": "FacialAnimationStreamingServiceStats",
       "Tags": [
         "NotCreatable"
@@ -24323,6 +25386,33 @@
           "Serialization": {
             "CanSave": true,
             "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "File",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "int64"
+          },
+          "MemberType": "Property",
+          "Name": "Size",
+          "Capabilities": {
+            "Read": [
+              "Plugin",
+              "AssetRead"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
           }
         }
       ]
@@ -25729,6 +26819,15 @@
           }
         }
       ]
+    },
+    {
+      "Name": "GameDownloaderService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Name": "GamePassService",
@@ -33374,6 +34473,35 @@
       "Members": []
     },
     {
+      "Name": "ImportSession",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "UploadSource",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Name": "IncrementalPatchBuilder",
       "Tags": [
         "Service"
@@ -34800,6 +35928,15 @@
       "Members": []
     },
     {
+      "Name": "InstanceFileSyncService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "InstanceRegistryService",
       "Tags": [
         "Service"
@@ -35275,6 +36412,15 @@
       "Members": []
     },
     {
+      "Name": "LanguageService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "LayerCollector",
       "Tags": [
         "NotCreatable"
@@ -35373,6 +36519,15 @@
           }
         }
       ]
+    },
+    {
+      "Name": "LegacyStudioBridge",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "ILegacyStudioBridge",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Name": "Light",
@@ -36184,6 +37339,15 @@
       ]
     },
     {
+      "Name": "LinkingService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "LiveScriptingService",
       "Tags": [
         "Service"
@@ -36207,6 +37371,37 @@
           }
         }
       ]
+    },
+    {
+      "Name": "LiveSyncService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "HasSyncedInstances",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "LocalDebuggerConnection",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "DebuggerConnection",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Superclass": "Script",
@@ -36711,6 +37906,15 @@
       "Members": []
     },
     {
+      "Name": "LogReporterService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "LogService",
       "Tags": [
         "Service"
@@ -36906,6 +38110,15 @@
       "Members": []
     },
     {
+      "Name": "LuauScriptAnalyzerService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "MLModelDeliveryService",
       "Tags": [
         "Service"
@@ -37074,6 +38287,15 @@
     },
     {
       "Name": "MatchmakingService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "MaterialGenerationService",
       "Tags": [
         "Service"
       ],
@@ -38851,6 +40073,230 @@
       "Members": []
     },
     {
+      "Name": "MetaBreakpoint",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Condition",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ContinueExecution",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Enabled",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "Id",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsLogpoint",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "Line",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "LogMessage",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "RemoveOnHit",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Script",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Valid",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "MetaBreakpointContext",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "ContextDataInternal",
+          "Tags": [
+            "NotScriptable"
+          ],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "MetaBreakpointManager",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Members": []
+    },
+    {
       "Name": "MicroProfilerService",
       "Tags": [
         "Service"
@@ -40010,6 +41456,15 @@
       ]
     },
     {
+      "Name": "OmniRecommendationsService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "OpenCloudApiV1",
       "Tags": [
         "NotCreatable"
@@ -40048,6 +41503,15 @@
         "NotCreatable"
       ],
       "Superclass": "Pages",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "OutputLink",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Object",
       "Serialized": false,
       "Members": []
     },
@@ -40361,11 +41825,52 @@
             "CanSave": false,
             "CanLoad": false
           }
+        },
+        {
+          "ValueType": {
+            "Name": "PackagePermission",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "PermissionLevel",
+          "Tags": [
+            "NotScriptable"
+          ],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Status",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript",
+              "AssetRead"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
         }
       ]
     },
     {
       "Name": "PackageService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "PackageUIService",
       "Tags": [
         "Service"
       ],
@@ -42276,6 +43781,15 @@
       "Members": []
     },
     {
+      "Name": "PatchBundlerFileWatch",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "PatchMapping",
       "Tags": [
         "NotCreatable"
@@ -42654,6 +44168,127 @@
       ]
     },
     {
+      "Name": "PausedState",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "AllThreadsPaused",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DebuggerPauseReason",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "Reason",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "ThreadId",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "PausedStateBreakpoint",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "PausedState",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "Breakpoint",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "Breakpoint",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "PausedStateException",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "PausedState",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "ExceptionText",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "PerformanceControlService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "PermissionsService",
       "Tags": [
         "Service"
@@ -42792,6 +44427,15 @@
       "Members": []
     },
     {
+      "Name": "PlacesService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "PlaneConstraint",
       "Serialized": true,
       "Name": "Plane",
@@ -42810,6 +44454,24 @@
       ],
       "Superclass": "Part",
       "Serialized": true,
+      "Members": []
+    },
+    {
+      "Name": "PlatformCloudStorageService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "PlatformFriendsService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
       "Members": []
     },
     {
@@ -44929,6 +46591,88 @@
       ]
     },
     {
+      "Name": "PluginConnection",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Object",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Connected",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "GroupId",
+          "Tags": [
+            "NotScriptable"
+          ],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "TargetId",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "PluginConnectionTargetType",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "Type",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "PluginConnectionService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "PluginDebugService",
       "Tags": [
         "Service"
@@ -45049,6 +46793,15 @@
       "Members": []
     },
     {
+      "Name": "PluginManagementService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "PluginManager",
       "Tags": [
         "NotCreatable"
@@ -45126,6 +46879,15 @@
       ],
       "Superclass": "Mouse",
       "Serialized": true,
+      "Members": []
+    },
+    {
+      "Name": "PluginPolicyService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
       "Members": []
     },
     {
@@ -45427,15 +47189,6 @@
       ],
       "Superclass": "Instance",
       "Serialized": true,
-      "Members": []
-    },
-    {
-      "Name": "PreloadedRbxmGenerator",
-      "Tags": [
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Serialized": false,
       "Members": []
     },
     {
@@ -46042,24 +47795,6 @@
       "Members": []
     },
     {
-      "Name": "RCCTextureGenerator",
-      "Tags": [
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Serialized": false,
-      "Members": []
-    },
-    {
-      "Name": "RCCTexturePackGenerator",
-      "Tags": [
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Serialized": false,
-      "Members": []
-    },
-    {
       "Superclass": "Instance",
       "Serialized": false,
       "Name": "RTAnimationTracker",
@@ -46247,6 +47982,349 @@
       ],
       "Superclass": "Instance",
       "Serialized": false,
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadata",
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataCallbacks",
+      "Members": []
+    },
+    {
+      "Superclass": "ReflectionMetadataItem",
+      "Serialized": true,
+      "Name": "ReflectionMetadataClass",
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "ExplorerImageIndex",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "ExplorerOrder",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Insertable",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "PreferredParent",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "ServiceVisibility",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "ServiceVisibility",
+          "Capabilities": {
+            "Write": [
+              "RobloxEngine"
+            ],
+            "Read": [
+              "RobloxEngine"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataClasses",
+      "Members": []
+    },
+    {
+      "Superclass": "ReflectionMetadataItem",
+      "Serialized": true,
+      "Name": "ReflectionMetadataEnum",
+      "Members": []
+    },
+    {
+      "Superclass": "ReflectionMetadataItem",
+      "Serialized": true,
+      "Name": "ReflectionMetadataEnumItem",
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataEnums",
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataEvents",
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataFunctions",
+      "Members": []
+    },
+    {
+      "Name": "ReflectionMetadataItem",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Browsable",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "ClassCategory",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ClientOnly",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Constraint",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Deprecated",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "EditingDisabled",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "EditorType",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "FFlag",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsBackend",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "PropertyOrder",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "ScriptContext",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ServerOnly",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "SliderScaling",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "double"
+          },
+          "MemberType": "Property",
+          "Name": "UIMaximum",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "double"
+          },
+          "MemberType": "Property",
+          "Name": "UIMinimum",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "double"
+          },
+          "MemberType": "Property",
+          "Name": "UINumTicks",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Superclass": "ReflectionMetadataItem",
+      "Serialized": true,
+      "Name": "ReflectionMetadataMember",
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataProperties",
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Name": "ReflectionMetadataYieldFunctions",
       "Members": []
     },
     {
@@ -46709,6 +48787,15 @@
           }
         }
       ]
+    },
+    {
+      "Name": "RibbonNotificationService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Superclass": "Constraint",
@@ -48446,6 +50533,33 @@
       "Members": []
     },
     {
+      "Name": "ScriptChangeService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "ScriptCloneWatcher",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "ScriptCloneWatcherHelper",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "ScriptCommitService",
       "Tags": [
         "Service"
@@ -48580,7 +50694,16 @@
       "Members": []
     },
     {
-      "Name": "ScriptPinningService",
+      "Name": "ScriptDocument",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "ScriptEditorService",
       "Tags": [
         "Service"
       ],
@@ -49350,6 +51473,15 @@
       ]
     },
     {
+      "Name": "SelectionHighlightManager",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "SelectionLasso",
       "Tags": [
         "NotCreatable"
@@ -49654,15 +51786,6 @@
     },
     {
       "Name": "SessionService",
-      "Tags": [
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Serialized": false,
-      "Members": []
-    },
-    {
-      "Name": "SessionTaskService",
       "Tags": [
         "Service"
       ],
@@ -52419,6 +54542,164 @@
       ]
     },
     {
+      "Name": "StackFrame",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "FrameId",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "FrameName",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DebuggerFrameType",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "FrameType",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DebuggerVariable",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "Globals",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "Line",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DebuggerVariable",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "Locals",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Populated",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Script",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "DebuggerVariable",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "Upvalues",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Superclass": "Instance",
       "Serialized": true,
       "Name": "StandalonePluginScripts",
@@ -52437,6 +54718,15 @@
       "Name": "StandardQueue",
       "Tags": [
         "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StartPageService",
+      "Tags": [
+        "Service"
       ],
       "Superclass": "Instance",
       "Serialized": false,
@@ -53246,6 +55536,15 @@
       "Members": []
     },
     {
+      "Name": "StartupMessageService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "Instance",
       "Serialized": false,
       "Name": "StateMachineDefinition",
@@ -53690,6 +55989,15 @@
       "Members": []
     },
     {
+      "Name": "StopWatchReporter",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "ValueBase",
       "Serialized": true,
       "Name": "StringValue",
@@ -53707,6 +56015,341 @@
           }
         }
       ]
+    },
+    {
+      "Name": "StudioActionOverride",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Object",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Enabled",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Released",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "StudioAction",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "StudioAction",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioAssetService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Name": "StudioAttachment",
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "AutoHideParent",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsArrowVisible",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "Offset",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "SourceAnchorPoint",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "TargetAnchorPoint",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Name": "StudioCallout",
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "AnchorPoint",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsArrowVisible",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsNextVisible",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "RowName",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Text",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Title",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioCameraService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "FocusDistance",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "LockCameraSpeed",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "LoggingEnabled",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioCaptureService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Name": "StudioData",
@@ -53736,6 +56379,484 @@
           }
         }
       ]
+    },
+    {
+      "Name": "StudioDeviceEmulatorService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioDeviceSimulatorService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioObjectBase",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioPublishService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "PublishLocked",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioScreenshotCapture",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "StudioCaptureScreenshotFormat",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "BufferFormat",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "StudioCaptureBufferStatus",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "BufferStatus",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "OriginalSize",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "Position",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Vector2"
+          },
+          "MemberType": "Property",
+          "Name": "Resolution",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "UICaptureMode",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "UICaptureMode",
+          "Capabilities": {
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioScriptDebugEventListener",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioSdkService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "Instance",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "ActiveScript",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "AlignDraggedObjects",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "DraggerSolveConstraints",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "DrawConstraintsOnTop",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "GridSize",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "Instance",
+            "Category": "Class"
+          },
+          "MemberType": "Property",
+          "Name": "HoverInstance",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "InstalledPluginData",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "PivotSnapToGeometry",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "float"
+          },
+          "MemberType": "Property",
+          "Name": "RotateIncrement",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "Secrets",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ShowConstraintDetails",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "ShowWeldDetails",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "StudioLocaleId",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "UseLocalSpace",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioTestService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "EditModeActive",
+          "Capabilities": {
+            "Write": [
+              "Plugin"
+            ],
+            "Read": [
+              "Plugin"
+            ]
+          },
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioTheme",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioUserService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "IsLoggedIn",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StudioWidget",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "StudioObjectBase",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "StudioWidgetsService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
     },
     {
       "Name": "StyleBase",
@@ -54901,6 +58022,77 @@
       ]
     },
     {
+      "Name": "SyncScriptBuilder",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "ScriptBuilder",
+      "Serialized": false,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "CompileTarget",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "CompileTarget",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "CoverageInfo",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "DebugInfo",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "PackAsSource",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "RawBytecode",
+          "Capabilities": [],
+          "Serialization": {
+            "CanSave": true,
+            "CanLoad": true
+          }
+        }
+      ]
+    },
+    {
       "Name": "SystemThemeService",
       "Tags": [
         "Service"
@@ -55026,6 +58218,15 @@
     },
     {
       "Name": "TeamCreatePublishService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "TeamCreateService",
       "Tags": [
         "Service"
       ],
@@ -55223,6 +58424,15 @@
     },
     {
       "Name": "TemporaryCageMeshProvider",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "TemporaryScriptService",
       "Tags": [
         "Service"
       ],
@@ -59593,6 +62803,33 @@
       ]
     },
     {
+      "Name": "TextureGenerationPartGroup",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "TextureGenerationService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "TextureGenerationUnwrappingRequest",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "ThirdPartyUserService",
       "Tags": [
         "Service"
@@ -59653,23 +62890,75 @@
       ]
     },
     {
-      "Name": "ThumbnailGenerator",
+      "Name": "ThreadState",
       "Tags": [
-        "Service"
+        "NotCreatable"
       ],
       "Superclass": "Instance",
-      "Serialized": true,
+      "Serialized": false,
       "Members": [
         {
           "ValueType": {
             "Name": "int"
           },
           "MemberType": "Property",
-          "Name": "GraphicsMode",
-          "Capabilities": [],
+          "Name": "FrameCount",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
           "Serialization": {
-            "CanSave": true,
-            "CanLoad": true
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "bool"
+          },
+          "MemberType": "Property",
+          "Name": "Populated",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "int"
+          },
+          "MemberType": "Property",
+          "Name": "ThreadId",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        },
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "ThreadName",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
           }
         }
       ]
@@ -59681,6 +62970,15 @@
       ],
       "Superclass": "Instance",
       "Serialized": true,
+      "Members": []
+    },
+    {
+      "Name": "ToastNotificationService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
       "Members": []
     },
     {
@@ -60086,6 +63384,15 @@
     },
     {
       "Name": "TraceRouteService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "TracerService",
       "Tags": [
         "Service"
       ],
@@ -60833,6 +64140,15 @@
       ]
     },
     {
+      "Name": "TutorialService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Superclass": "TweenBase",
       "Serialized": true,
       "Name": "Tween",
@@ -60911,15 +64227,6 @@
       ],
       "Superclass": "Instance",
       "Serialized": true,
-      "Members": []
-    },
-    {
-      "Name": "UGCTranscodeService",
-      "Tags": [
-        "Service"
-      ],
-      "Superclass": "Instance",
-      "Serialized": false,
       "Members": []
     },
     {
@@ -63753,6 +67060,15 @@
       ]
     },
     {
+      "Name": "VRStatusService",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": false,
+      "Members": []
+    },
+    {
       "Name": "ValueBase",
       "Tags": [
         "NotCreatable"
@@ -65260,6 +68576,44 @@
       ]
     },
     {
+      "Name": "VirtualInput",
+      "Tags": [
+        "NotCreatable"
+      ],
+      "Superclass": "Object",
+      "Serialized": false,
+      "Members": []
+    },
+    {
+      "Name": "VirtualInputManager",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "string"
+          },
+          "MemberType": "Property",
+          "Name": "AdditionalLuaState",
+          "Capabilities": {
+            "Write": [
+              "RobloxScript"
+            ],
+            "Read": [
+              "RobloxScript"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
+    },
+    {
       "Name": "VirtualUser",
       "Tags": [
         "Service"
@@ -65403,6 +68757,34 @@
       "Superclass": "Instance",
       "Serialized": false,
       "Members": []
+    },
+    {
+      "Name": "VoiceChatInternal",
+      "Tags": [
+        "Service"
+      ],
+      "Superclass": "Instance",
+      "Serialized": true,
+      "Members": [
+        {
+          "ValueType": {
+            "Name": "VoiceChatState",
+            "Category": "Enum"
+          },
+          "MemberType": "Property",
+          "Name": "VoiceChatState",
+          "Capabilities": {
+            "Read": [
+              "RobloxScript",
+              "Audio"
+            ]
+          },
+          "Serialization": {
+            "CanSave": false,
+            "CanLoad": false
+          }
+        }
+      ]
     },
     {
       "Name": "VoiceChatService",

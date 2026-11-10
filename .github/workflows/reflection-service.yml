@@ -37,6 +37,7 @@ jobs:
           jq -r '"result: " + .status + " (engine " + (.engine_version // "?") + ")"' "$RESULT"
           echo "outputs=$(jq -rc '.outputs // [] | join(" ")' "$RESULT")" >> "$GITHUB_OUTPUT"
           echo "engine_version=$(jq -r '.engine_version // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
+          echo "version_hash=$(jq -r '.version_hash // ""' "$RESULT")" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push dump
         if: steps.extract.outputs.outputs != ''
@@ -48,7 +49,11 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "[OpenCloud] Add ReflectionService dump for ${{ steps.extract.outputs.engine_version }}" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            MESSAGE="[OpenCloud] Add ReflectionService dump for ${{ steps.extract.outputs.engine_version }}"
+            if [ -n "${{ steps.extract.outputs.version_hash }}" ]; then
+              MESSAGE="$MESSAGE ${{ steps.extract.outputs.version_hash }}"
+            fi
+            git commit -m "$MESSAGE" -m "Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             # Another dump run can commit the same file (for example the same version hash produced by a
             # concurrent full dump run) between our checkout and our push. That surfaces as an add/add
             # conflict on `git pull --rebase`, which retrying the identical pull can never clear, so prefer

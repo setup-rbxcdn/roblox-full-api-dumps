@@ -142,6 +142,7 @@ def main():
     result = {
         "status": "written" if outputs else "unchanged",
         "engine_version": engine_version,
+        "version_hash": f"version-{hash_version}" if hash_version else None,
         "outputs": outputs,
     }
     pathlib.Path(args.result).write_text(
